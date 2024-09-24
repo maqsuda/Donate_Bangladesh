@@ -17,7 +17,7 @@ function getDateTime() {
 }
 
 function getDonateAmount(){
-
+   
 
 }
 
