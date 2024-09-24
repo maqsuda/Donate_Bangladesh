@@ -14,30 +14,46 @@ document.getElementById('btn-noakhali-donate-now').addEventListener('click', fun
         document.getElementById('noakhali-amount').innerText = noakhaliAmount;
         document.getElementById('my_modal_5').showModal();
 
-let historyTransaction=inputNoakhaliAmount+" "+document.getElementById('title-noakhali').innerText;
+        let historyTransaction = inputNoakhaliAmount + " Taka is " + document.getElementById('title-noakhali').innerText;
 
+        let d = getDateTime();
 
+        // Add Text
+        const str = ["border", "rounded-lg", "p-4", "m-4", "font-bold"];
+        const p = document.createElement('p');
+        p.innerText = ` ${historyTransaction} \nDate : ${d} `;
+        console.log(p);
+
+        for (let s of str) {
+            p.classList.add(s);
+        }
+        document.getElementById('transaction-container').appendChild(p);
+      
     } else {
         alert('Please input positive number !...');
     }
-})
-
-
-document.getElementById('btn-donate').addEventListener('click', function (event) {
-    event.preventDefault();
-    document.getElementById('btn-history').classList.remove('bg-[#B4F461]');
-    document.getElementById('btn-donate').classList.add('bg-[#B4F461]');
-    document.getElementById('donate-section').removeAttribute('hidden');
-    document.getElementById('history-section').setAttribute('hidden', true);
-
 });
 
-document.getElementById('btn-history').addEventListener('click', function (event) {
+
+
+
+
+
+
+document.getElementById('btn-donate').addEventListener('click', function(event) {
     event.preventDefault();
-
-    document.getElementById('btn-donate').classList.remove('bg-[#B4F461]');
-    document.getElementById('btn-history').classList.add('bg-[#B4F461]');
-
-    document.getElementById('history-section').removeAttribute('hidden');
-    document.getElementById('donate-section').setAttribute('hidden', true);
+    showSelectionById('donate-section');
+    showButtonColorById('btn-donate');
 });
+
+document.getElementById('btn-history').addEventListener('click', function(event) {
+    event.preventDefault();
+    showSelectionById('history-section');
+    showButtonColorById('btn-history');
+});
+
+document.getElementById('blog').addEventListener('click',function(){
+    window.open("blog.html");
+});
+
+
